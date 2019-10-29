@@ -1,6 +1,5 @@
 var persp_camera, ortog_camera //cameras
 var scene, active_camera
-
 var pedestal
 
 function render() {
@@ -17,7 +16,18 @@ function createScene() {
     pedestal = new Pedestal(0,4.5,20)
     scene.add(pedestal)
 
+    let focuspoint = new THREE.Vector3(0,0,0)
+
+    let spotlight1 = new Spotlight(10,10,10, focuspoint)
+    let spotlight2 = new Spotlight(10,10,-10, focuspoint)
+    let spotlight3 = new Spotlight(-10,10,10, focuspoint)
+    let spotlight4 = new Spotlight(-10,10,-10, focuspoint)
     
+    scene.add(spotlight1)
+    scene.add(spotlight2)
+    scene.add(spotlight3)
+    scene.add(spotlight4)
+
 }
 
 function traverseElements(obj) {
