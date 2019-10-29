@@ -1,6 +1,8 @@
 var persp_camera, ortog_camera //cameras
 var scene, active_camera
 
+var pedestal
+
 function render() {
     renderer.render(scene, active_camera);
 }
@@ -11,6 +13,9 @@ function createScene() {
     scene = new THREE.Scene()
     scene.add(new THREE.AxesHelper(5))
     scene.background = new THREE.Color(0xe4edf5)
+
+    pedestal = new Pedestal(0,4.5,20)
+    scene.add(pedestal)
 
     
 }
@@ -28,12 +33,11 @@ function update() {
 
 }
 
-
 function createCameras() {
     persp_camera = new THREE.PerspectiveCamera(60, window.outerWidth / window.outerHeight, 1, 1000);
     persp_camera.position.set(30,30,30)
     persp_camera.lookAt(0,0,0)
 
-    
+
     active_camera = persp_camera
 }
