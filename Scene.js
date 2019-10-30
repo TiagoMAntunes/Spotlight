@@ -63,7 +63,8 @@ function traverseElements(obj) {
 function update() {
     for(i = 0 ; i < spotlights.length; i++){
         if(switches[i]){
-            spotlights[i].spotlight.intensity = spotlights[i].spotlight.intensity == 0? 1 : 0 
+            spotlights[i].spotlight.intensity = spotlights[i].spotlight.intensity == 0? 1 : 0
+            spotlights[i].helper.visible = spotlights[i].helper.visible ? false : true
             switches[i] = false
         }
     }
