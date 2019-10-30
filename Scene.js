@@ -3,6 +3,8 @@ var scene, active_camera
 var pedestal
 var spotlights = []
 
+var directional_light
+
 function render() {
     renderer.render(scene, active_camera);
 }
@@ -34,6 +36,9 @@ function createScene() {
         scene.add(spotlights[i])
         scene.add(spotlights[i].helper)
     }
+
+    directional_light = new THREE.DirectionalLight(0xffffff, 1)
+    scene.add(directional_light)
 
     scene.add(floor)
     scene.add(wall)

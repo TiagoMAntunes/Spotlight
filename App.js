@@ -20,7 +20,7 @@ function onKeyDown(e) {
       
       break
       case 81 || 113:  //Q ou q
-      
+      directional_light.visible = !directional_light.visible
       break
       case 87 || 119:  //W ou w
       
