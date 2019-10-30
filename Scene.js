@@ -30,21 +30,10 @@ function createScene() {
     floor.position.set(0,-0.5,15)
     wall.position.set(-11, 0, 15)
 
-    scene.add(spotlights[0])
-    scene.add(spotlights[0].spotlight)
-    scene.add(spotlights[0].helper)
-
-    scene.add(spotlights[1])
-    scene.add(spotlights[1].spotlight)
-    scene.add(spotlights[1].helper)
-
-    scene.add(spotlights[2])
-    scene.add(spotlights[2].spotlight)
-    scene.add(spotlights[2].helper)
-
-    scene.add(spotlights[3])
-    scene.add(spotlights[3].spotlight)
-    scene.add(spotlights[3].helper)
+    for (let i in spotlights) {
+        scene.add(spotlights[i])
+        scene.add(spotlights[i].helper)
+    }
 
     scene.add(floor)
     scene.add(wall)

@@ -15,14 +15,17 @@ class Spotlight extends SceneObject {
         this.add(lightbulb)
 
         var spotlight = new THREE.SpotLight(0xffffff)
-        spotlight.position.set(x, y, z)
-        spotlight.angle = 0.5
+        //spotlight.position.set(x, y, z)
+        //spotlight.angle = 0.5
 
         var helper = new THREE.SpotLightHelper(spotlight)
+        //helper.position.set(0,0,0)
         
         this.spotlight = spotlight
         this.helper = helper
 
+        this.add(spotlight)
+        //this.add(helper)
         this.position.set(x,y,z)
         
 
