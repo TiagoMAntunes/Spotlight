@@ -1,6 +1,6 @@
 var persp_camera, ortog_camera //cameras
 var scene, active_camera
-var pedestal
+var pedestal, icosahedron
 var spotlights = []
 
 var directional_light
@@ -18,7 +18,8 @@ function createScene() {
 
     pedestal = new Pedestal(0,4.5,0)
     scene.add(pedestal)
-
+    icosahedron = new Icosahedron(0,10,0)
+    scene.add(icosahedron)
     let focuspoint = new THREE.Vector3(0,8,0)
 
     spotlights[0] = new Spotlight(10,20,10, focuspoint)
@@ -27,8 +28,8 @@ function createScene() {
     spotlights[3] = new Spotlight(-10,20,-10, focuspoint)
     
 
-    let floor = new THREE.Mesh(new THREE.BoxGeometry(200, 1, 100), new THREE.MeshBasicMaterial({color: 0x657ea6}))
-    let wall = new THREE.Mesh(new THREE.BoxGeometry(1, 50, 100), new THREE.MeshBasicMaterial({color: 0x657ea6}))
+    let floor = new THREE.Mesh(new THREE.BoxGeometry(200, 1, 100), new THREE.MeshPhongMaterial({color: "blue"}))
+    let wall = new THREE.Mesh(new THREE.BoxGeometry(1, 50, 100), new THREE.MeshPhongMaterial({color: "red"}))
     floor.position.set(0,-0.5,15)
     wall.position.set(-11, 0, 15)
 
