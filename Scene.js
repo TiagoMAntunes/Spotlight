@@ -64,6 +64,13 @@ function update() {
         }
     }
 
+    for (i in scene.children) {
+    	if (['pedestal'].indexOf(scene.children[i].name) >= 0) {
+    		console.log("in pedestal")
+    		scene.children[i].update()
+    	} 
+    }
+
 }
 
 function createCameras() {

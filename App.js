@@ -1,5 +1,7 @@
 var renderer, wireframe = true
 var switches = [false, false, false, false]
+var lighting_calc = true
+var lambert = true
 
 function onKeyDown(e) {
   switch(e.keyCode) {
@@ -23,10 +25,10 @@ function onKeyDown(e) {
       directional_light.visible = !directional_light.visible
       break
       case 87 || 119:  //W ou w
-      
+      lighting_calc = !lighting_calc
       break
       case 69 || 101:  //E ou e
-      
+      lambert = !lambert
       break
       
   }
