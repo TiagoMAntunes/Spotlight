@@ -33,6 +33,11 @@ function onKeyDown(e) {
 }
 
 function onResize() {
+	persp_camera.aspect = window.innerWidth / window.innerHeight
+	persp_camera.updateProjectionMatrix()
+	
+	//ortog_camera.aspect = window.innerWidth / window.innerHeight
+	//ortog_camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
 }
 
