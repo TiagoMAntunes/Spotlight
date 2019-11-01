@@ -2,11 +2,15 @@ class Spotlight extends SceneObject {
     constructor(x,y,z, look) {
         super()
 
-        let mat = new THREE.MeshBasicMaterial({color: 0xff8712})
-        mat.side = THREE.DoubleSide
+        this.basicMat = new THREE.MeshBasicMaterial({color: 0xff8712})
+        this.lambMat = new THREE.MeshLambertMaterial({color: 0xff8712})
+        this.phongMat = new THREE.MeshPhongMaterial({color: 0xff8712})
+
+        this.basicMat.side = THREE.DoubleSide
         let cone = new THREE.ConeGeometry(1, 2, 8, 1, true)
-        cone = new THREE.Mesh(cone, mat)
+        cone = new THREE.Mesh(cone, this.basicMat)
         cone.position.set(0,0,0)
+        cone.name = 'cone'
         this.add(cone)
         
         let lightmat = new THREE.MeshBasicMaterial({color: 0xcacfcb})
@@ -24,6 +28,7 @@ class Spotlight extends SceneObject {
 
         this.add(spotlight)
         
+        this.name = 'spotlight'
         this.position.set(x,y,z)
         
 
@@ -34,4 +39,22 @@ class Spotlight extends SceneObject {
             this.rotateX(- Math.PI / 2)
         }
     }
+
+    update() {
+        for (i in this.children) {
+            if (this.children[i].name == 'cone') {
+                if (!lighting_calc) 
+                    this.children[i].material = this.basicMat
+                
+                else {
+                    if (lambert) 
+                        this.children[i].material = this.lambMat
+                    
+                    else 
+                        this.children[i].material = this.phongMat
+                }
+            }
+        }
+    }
+
 }

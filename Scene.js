@@ -65,8 +65,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['pedestal'].indexOf(scene.children[i].name) >= 0) {
-    		console.log("in pedestal")
+    	if (['pedestal', 'spotlight'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
