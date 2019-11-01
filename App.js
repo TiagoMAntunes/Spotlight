@@ -21,6 +21,15 @@ function onKeyDown(e) {
       switches[3] = true
       
       break
+
+      case 53: //5
+      active_camera = persp_camera
+      
+      break
+      case 54: //6
+      active_camera = ortog_camera
+      
+      break
       case 81 || 113:  //Q ou q
       directional_light.visible = !directional_light.visible
       break

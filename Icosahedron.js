@@ -3,7 +3,6 @@ class Icosahedron extends THREE.Object3D {
         super()
 
         let mat = new THREE.MeshPhongMaterial({ color: "green" })
-
         let geometry = new THREE.Geometry()
 
 
@@ -22,6 +21,11 @@ class Icosahedron extends THREE.Object3D {
         geometry.vertices.push(new THREE.Vector3(phi, 0, -1))
         geometry.vertices.push(new THREE.Vector3(-phi, 0, -1))
 
+
+        geometry.computeFaceNormals();
+        geometry.computeVertexNormals();
+
+        //this.add( new THREE.Mesh( geometry, mat ) );
 
 
         this.position.set(x, y, z)

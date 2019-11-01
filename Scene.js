@@ -1,6 +1,6 @@
 var persp_camera, ortog_camera //cameras
 var scene, active_camera
-var pedestal, icosahedron
+var pedestal, icosahedron, painting
 var spotlights = []
 
 var directional_light
@@ -18,14 +18,19 @@ function createScene() {
 
     pedestal = new Pedestal(0,4.5,0)
     scene.add(pedestal)
-    icosahedron = new Icosahedron(0,10,0)
+
+    icosahedron = new Icosahedron(0,12,0)
     scene.add(icosahedron)
+
+    painting = new Painting(-10, 15, 0)
+    scene.add(painting)
+
     let focuspoint = new THREE.Vector3(0,8,0)
 
-    spotlights[0] = new Spotlight(10,20,10, focuspoint)
-    spotlights[1] = new Spotlight(10,20,-10, focuspoint)
-    spotlights[2] = new Spotlight(-10,20,10, focuspoint)
-    spotlights[3] = new Spotlight(-10,20,-10, focuspoint)
+    spotlights[0] = new Spotlight(20,25,15, focuspoint)
+    spotlights[1] = new Spotlight(20,25,-15, focuspoint)
+    spotlights[2] = new Spotlight(-5,25,15, focuspoint)
+    spotlights[3] = new Spotlight(-5,25,-15, focuspoint)
 
     let floor = new Floor(0, 0, 0)
     let wall = new Wall(0, 0, 0)
@@ -35,7 +40,8 @@ function createScene() {
         scene.add(spotlights[i].helper)
     }
 
-    directional_light = new THREE.DirectionalLight(0xffffff, 1)
+    directional_light = new THREE.DirectionalLight(0xffffff, 0.7)
+    directional_light
     scene.add(directional_light)
 
     scene.add(floor)
@@ -71,8 +77,14 @@ function update() {
 
 function createCameras() {
     persp_camera = new THREE.PerspectiveCamera(60, window.outerWidth / window.outerHeight, 1, 1000);
-    persp_camera.position.set(40,30,55)
-    persp_camera.lookAt(0,10,15)
+    persp_camera.position.set(35,30,20)
+    persp_camera.lookAt(0,10,0)
+
+    ortog_camera = new THREE.OrthographicCamera(window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, 1, 1000)
+    ortog_camera.position.set(10,15,0)
+    ortog_camera.lookAt(0,15,0)
+    ortog_camera.zoom = 40
+    ortog_camera.updateProjectionMatrix()
 
 
     active_camera = persp_camera

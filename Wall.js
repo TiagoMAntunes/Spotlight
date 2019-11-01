@@ -1,10 +1,10 @@
 class Wall extends SceneObject {
     constructor(x,y,z) {
         super()
-        this.lambMat = new THREE.MeshLambertMaterial({color: "red"})
-        this.phongMat = new THREE.MeshPhongMaterial({color: "red"})
-        this.basicMat = new THREE.MeshBasicMaterial({color: "red"})
-        let wall = super.createSceneObjBox(-11, 0, 15, 1, 50, 100, this.lambMat)
+        this.lambMat = new THREE.MeshLambertMaterial({color: 0xf4dfb6})
+        this.phongMat = new THREE.MeshPhongMaterial({color: 0xf4dfb6})
+        this.basicMat = new THREE.MeshBasicMaterial({color: 0xf4dfb6})
+        let wall = super.createSceneObjBox(-11, 0, 15, 1, 55, 100, this.lambMat)
 
         this.add(wall)
 

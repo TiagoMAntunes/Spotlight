@@ -7,19 +7,21 @@ class Spotlight extends SceneObject {
         this.phongMat = new THREE.MeshPhongMaterial({color: 0xff8712})
 
         this.basicMat.side = THREE.DoubleSide
-        let cone = new THREE.ConeGeometry(1, 2, 8, 1, true)
+        let cone = new THREE.ConeGeometry(1.5, 2, 8, 1, true)
         cone = new THREE.Mesh(cone, this.basicMat)
         cone.position.set(0,0,0)
         cone.name = 'cone'
         this.add(cone)
         
-        let lightmat = new THREE.MeshBasicMaterial({color: 0xcacfcb})
-        let lightbulb = super.createSceneObjSphere(0, -0.5, 0, 0.5, 8, 6, 0, Math.PI * 2, lightmat)
+        let lightmat = new THREE.MeshPhongMaterial({color: 0xcacfcb, emissive: 0xcacfcb})
+        let lightbulb = super.createSceneObjSphere(0, -0.5, 0, 0.6, 8, 6, 0, Math.PI * 2, lightmat)
         
         this.add(lightbulb)
 
         var spotlight = new THREE.SpotLight(0xffffff)
-        spotlight.angle = 0.5
+        spotlight.intensity = 0.8
+        spotlight.angle = 0.6
+        spotlight.penumbra = 0.5
     
         var helper = new THREE.SpotLightHelper(spotlight)
         
