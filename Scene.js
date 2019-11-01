@@ -26,12 +26,9 @@ function createScene() {
     spotlights[1] = new Spotlight(10,20,-10, focuspoint)
     spotlights[2] = new Spotlight(-10,20,10, focuspoint)
     spotlights[3] = new Spotlight(-10,20,-10, focuspoint)
-    
 
-    let floor = new THREE.Mesh(new THREE.BoxGeometry(200, 1, 100), new THREE.MeshPhongMaterial({color: "blue"}))
-    let wall = new THREE.Mesh(new THREE.BoxGeometry(1, 50, 100), new THREE.MeshPhongMaterial({color: "red"}))
-    floor.position.set(0,-0.5,15)
-    wall.position.set(-11, 0, 15)
+    let floor = new Floor(0, 0, 0)
+    let wall = new Wall(0, 0, 0)
 
     for (let i in spotlights) {
         scene.add(spotlights[i])
@@ -65,7 +62,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['pedestal', 'spotlight'].indexOf(scene.children[i].name) >= 0) {
+    	if (['pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
