@@ -68,7 +68,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
+    	if (['pedestal', 'painting', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
