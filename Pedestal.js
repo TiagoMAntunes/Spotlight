@@ -1,9 +1,8 @@
 class Pedestal extends SceneObject {
     constructor(x,y,z) {
         super()
-        this.lambMat = new THREE.MeshLambertMaterial({color: 0xAAAAAA})
-        this.phongMat = new THREE.MeshPhongMaterial({color: 0xAAAAAA})
-        this.basicMat = new THREE.MeshBasicMaterial({color: 0xAAAAAA})
+        this.createMaterials()
+        
         let body = super.createSceneObjCylinderRotX(0,0,0, 1, 1, 6, 20, this.lambMat, 0)
         let top = super.createSceneObjBox(0, 3.5, 0, 4, 2, 4, this.lambMat)
         let bot = super.createSceneObjBox(0, -3.5, 0, 4, 1, 4, this.lambMat)
@@ -29,5 +28,11 @@ class Pedestal extends SceneObject {
 	    			this.children[i].material = this.phongMat
 	    	}
 	    }
+    }
+
+    createMaterials() {
+        this.lambMat = new THREE.MeshLambertMaterial({color: 0xAAAAAA})
+        this.phongMat = new THREE.MeshPhongMaterial({color: 0xAAAAAA})
+        this.basicMat = new THREE.MeshBasicMaterial({color: 0xAAAAAA}) 
     }
 }
