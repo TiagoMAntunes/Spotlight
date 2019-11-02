@@ -44,11 +44,15 @@ function onKeyDown(e) {
 }
 
 function onResize() {
+	// update perspsective camera
 	persp_camera.aspect = window.innerWidth / window.innerHeight
 	persp_camera.updateProjectionMatrix()
 	
-	//ortog_camera.aspect = window.innerWidth / window.innerHeight
-	//ortog_camera.updateProjectionMatrix()
+	ortog_camera.left = -window.innerWidth / 2
+	ortog_camera.right = window.innerWidth / 2
+	ortog_camera.top = window.innerHeight / 2
+	ortog_camera.bottom = - window.innerHeight / 2
+	ortog_camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
 }
 
