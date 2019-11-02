@@ -24,7 +24,7 @@ class Spotlight extends SceneObject {
         this.spotlight = spotlight
         this.helper = helper
 
-        this.add(spotlight)
+        lightbulb.add(spotlight)
         
         this.name = 'spotlight'
         this.position.set(x,y,z)

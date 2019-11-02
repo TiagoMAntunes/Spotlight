@@ -22,15 +22,15 @@ function createScene() {
     icosahedron = new Icosahedron(0,12,0)
     scene.add(icosahedron)
 
-    painting = new Painting(-10, 15, 0)
+    painting = new Painting(-10, 15, 30)
     scene.add(painting)
 
     let focuspoint = new THREE.Vector3(0,8,0)
 
     spotlights[0] = new Spotlight(20,25,15, focuspoint)
     spotlights[1] = new Spotlight(20,25,-15, focuspoint)
-    spotlights[2] = new Spotlight(-5,25,15, focuspoint)
-    spotlights[3] = new Spotlight(-5,25,-15, focuspoint)
+    spotlights[2] = new Spotlight(-5,25,0, focuspoint)
+    spotlights[3] = new Spotlight(0,25,30, new THREE.Vector3(-10, 10, 30))
 
     let floor = new Floor(0, 0, 0)
     let wall = new Wall(0, 0, 0)
@@ -68,7 +68,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['pedestal', 'painting', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
+    	if (['pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
@@ -81,8 +81,8 @@ function createCameras() {
     persp_camera.lookAt(0,10,0)
 
     ortog_camera = new THREE.OrthographicCamera(window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, 1, 1000)
-    ortog_camera.position.set(10,15,0)
-    ortog_camera.lookAt(0,15,0)
+    ortog_camera.position.set(10,15,30)
+    ortog_camera.lookAt(0,15,30)
     ortog_camera.zoom = 40
     ortog_camera.updateProjectionMatrix()
 
