@@ -96,17 +96,16 @@ class Painting extends SceneObject{
     }
 
     activateLambert(part) {
-        console.log(part.name)
         if (part.name == 'square')                
             part.material = this.squareLambMat
 
         else if (part.name == 'side')
             part.material = this.sideLambMat
 
-        else if (part.name = 'circle')
+        else if (part.name == 'circle')
             part.material = this.circleLambMat
 
-        else if (part.name = 'frame') {
+        else if (part.name == 'frame') {
             console.log("frame")
             part.material = this.frameLambMat
         }
@@ -119,10 +118,10 @@ class Painting extends SceneObject{
         else if (part.name == 'side')
             part.material = this.sidePhongMat
 
-        else if (part.name = 'circle')
+        else if (part.name == 'circle')
             part.material = this.circlePhongMat
 
-        else if (part.name = 'frame') {
+        else if (part.name == 'frame') {
             console.log("frame")
             part.material = this.framePhongMat
         }
