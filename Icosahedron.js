@@ -11,20 +11,20 @@ class Icosahedron extends THREE.Object3D {
 
         const t = (1 + Math.sqrt(5) / 2)
         //generate vertices
-        geometry.vertices.push(new THREE.Vector3(-1, t, 0))
-        geometry.vertices.push(new THREE.Vector3(1, t, 0))
-        geometry.vertices.push(new THREE.Vector3(-1, -t, 0))
-        geometry.vertices.push(new THREE.Vector3(1, -t, 0))
+        geometry.vertices.push(new THREE.Vector3(-1 -0.1, t-0.1, 0))
+        geometry.vertices.push(new THREE.Vector3(1, t+0.1, 0))
+        geometry.vertices.push(new THREE.Vector3(-1, -t-0.2, 0))
+        geometry.vertices.push(new THREE.Vector3(1, -t-0.3, 0))
 
-        geometry.vertices.push(new THREE.Vector3(0, -1, t))
-        geometry.vertices.push(new THREE.Vector3(0, 1, t))
-        geometry.vertices.push(new THREE.Vector3(0, -1, -t))
-        geometry.vertices.push(new THREE.Vector3(0, 1, -t))
+        geometry.vertices.push(new THREE.Vector3(0, -1.5, t))
+        geometry.vertices.push(new THREE.Vector3(0, 1.5, t-0.6))
+        geometry.vertices.push(new THREE.Vector3(0, -1, -t-0.5))
+        geometry.vertices.push(new THREE.Vector3(0, 1, -t+0.2))
 
-        geometry.vertices.push(new THREE.Vector3(t, 0, -1))
-        geometry.vertices.push(new THREE.Vector3(t, 0, 1))
-        geometry.vertices.push(new THREE.Vector3(-t, 0, -1))
-        geometry.vertices.push(new THREE.Vector3(-t, 0, 1))
+        geometry.vertices.push(new THREE.Vector3(t, 0.8, -1))
+        geometry.vertices.push(new THREE.Vector3(t, 0.3, 1))
+        geometry.vertices.push(new THREE.Vector3(-t, 0.1, -1))
+        geometry.vertices.push(new THREE.Vector3(-t, 0.5, 1))
 
         geometry.faces.push(new THREE.Face3(0, 11, 5))
         geometry.faces.push(new THREE.Face3(0, 5, 1))
