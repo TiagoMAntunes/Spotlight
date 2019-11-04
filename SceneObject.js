@@ -5,7 +5,7 @@ class SceneObject extends THREE.Object3D {
     }
 
     createSceneObjBox(x, y, z, width, height, depth, material) {
-        let geometry = new THREE.BoxGeometry(width, height, depth)
+        let geometry = new THREE.BoxGeometry(width, height, depth, width, height, depth)
         let mesh = new THREE.Mesh(geometry, material)
 
         mesh.position.set(x, y, z)

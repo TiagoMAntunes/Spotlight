@@ -4,7 +4,7 @@ class Floor extends SceneObject {
         this.lambMat = new THREE.MeshLambertMaterial({color: 0xce4945})
         this.phongMat = new THREE.MeshPhongMaterial({color: 0xce4945})
         this.basicMat = new THREE.MeshBasicMaterial({color: 0xce4945})
-        let floor = super.createSceneObjBox(0,-0.5,15, 200, 1, 100, this.phongMat)
+        let floor = super.createSceneObjBox(0,-0.5,15, 200, 1, 100, this.lambMat)
 
         this.add(floor)
 

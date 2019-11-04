@@ -1,5 +1,5 @@
 class Spotlight extends SceneObject {
-    constructor(x,y,z, look) {
+    constructor(x,y,z, tgt) {
         super()
 
         this.createMaterials()
@@ -18,24 +18,22 @@ class Spotlight extends SceneObject {
         spotlight.intensity = 0.8
         spotlight.angle = 0.6
         spotlight.penumbra = 0.5
+        spotlight.target = tgt
     
         var helper = new THREE.SpotLightHelper(spotlight)
         
         this.spotlight = spotlight
+        this.target = spotlight.target
         this.helper = helper
 
         lightbulb.add(spotlight)
         
         this.name = 'spotlight'
         this.position.set(x,y,z)
-        
 
-
-        //points to desired point
-        if (look !== undefined) {
-            this.lookAt(look)
-            this.rotateX(- Math.PI / 2)
-        }
+        this.lookAt(tgt.position)
+        this.rotateX(- Math.PI / 2)
+    
     }
 
     update() {

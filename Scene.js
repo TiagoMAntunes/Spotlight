@@ -25,12 +25,14 @@ function createScene() {
     painting = new Painting(-10, 15, 30)
     scene.add(painting)
 
-    let focuspoint = new THREE.Vector3(0,8,0)
+    let ptg_center = new THREE.Object3D()
+    ptg_center.position.set(-10, 15, 30)
+    scene.add(ptg_center)
 
-    spotlights[0] = new Spotlight(20,25,15, focuspoint)
-    spotlights[1] = new Spotlight(20,25,-15, focuspoint)
-    spotlights[2] = new Spotlight(-5,25,0, focuspoint)
-    spotlights[3] = new Spotlight(0,25,30, new THREE.Vector3(-10, 10, 30))
+    spotlights[0] = new Spotlight(20,25,15, icosahedron)
+    spotlights[1] = new Spotlight(20,25,-15, icosahedron)
+    spotlights[2] = new Spotlight(-5,25,0, icosahedron)
+    spotlights[3] = new Spotlight(0,25,30, ptg_center)
 
     let floor = new Floor(0, 0, 0)
     let wall = new Wall(0, 0, 0)
@@ -38,9 +40,14 @@ function createScene() {
     for (let i in spotlights) {
         scene.add(spotlights[i])
         scene.add(spotlights[i].helper)
+        scene.add(spotlights[i].target)
     }
 
-    directional_light = new THREE.DirectionalLight(0xffffff, 0.7)
+    directional_light = new THREE.DirectionalLight(0xffffff, 0.5)
+    directional_light.position.set(30,30,0)
+    let helper = new THREE.DirectionalLightHelper(directional_light, 5)
+    scene.add(helper)
+    directional_light.target = scene
     directional_light
     scene.add(directional_light)
 
@@ -68,7 +75,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
+    	if (['painting', 'pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
