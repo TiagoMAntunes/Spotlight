@@ -2,7 +2,10 @@ class Icosahedron extends THREE.Object3D {
     constructor(x, y, z) {
         super()
 
-        let mat = new THREE.MeshPhongMaterial({ color: "green" })
+        this.phongMat = new THREE.MeshPhongMaterial({ color: 0xe0a5fb })
+        this.basicMat = new THREE.MeshBasicMaterial({ color: 0xe0a5fb })
+        this.lambMat = new THREE.MeshLambertMaterial({ color: 0xe0a5fb })
+
         let geometry = new THREE.Geometry()
 
 
@@ -50,9 +53,23 @@ class Icosahedron extends THREE.Object3D {
         geometry.computeFaceNormals();
         //geometry.computeVertexNormals();
 
-        this.add( new THREE.Mesh( geometry, mat ) );
+        this.add( new THREE.Mesh(geometry, this.phongMat));
 
-
+        this.name = 'icosahedron'
         this.position.set(x, y, z)
+    }
+
+    update() {
+        if (!lighting_calc) 
+            this.children[0].material = this.basicMat
+        
+        else {
+            if (lambert) 
+                this.children[0].material = this.lambMat
+            
+            else 
+                this.children[0].material = this.phongMat
+        }
+        
     }
 }

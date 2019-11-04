@@ -4,7 +4,7 @@ class Spotlight extends SceneObject {
 
         this.createMaterials()
         
-        let cone = new THREE.ConeGeometry(1.5, 2, 8, 1, true)
+        let cone = new THREE.ConeGeometry(1.5, 2, 20, 1, true)
         cone = new THREE.Mesh(cone, this.coneBasicMat)
         cone.position.set(0,0,0)
         cone.name = 'cone'
@@ -15,7 +15,7 @@ class Spotlight extends SceneObject {
         this.add(lightbulb)
 
         var spotlight = new THREE.SpotLight(0xffffff)
-        spotlight.intensity = 0.8
+        spotlight.intensity = 0.5
         spotlight.angle = 0.6
         spotlight.penumbra = 0.5
         spotlight.target = tgt
@@ -52,18 +52,18 @@ class Spotlight extends SceneObject {
 
     createMaterials() {
         // cone's materials
-        this.coneBasicMat = new THREE.MeshBasicMaterial({color: 0xff8712})
-        this.coneLambMat = new THREE.MeshLambertMaterial({color: 0xff8712})
-        this.conePhongMat = new THREE.MeshPhongMaterial({color: 0xff8712})
+        this.coneBasicMat = new THREE.MeshBasicMaterial({color: 0xcecece})
+        this.coneLambMat = new THREE.MeshLambertMaterial({color: 0xcecece, reflectivity: 1})
+        this.conePhongMat = new THREE.MeshPhongMaterial({color: 0xcecece})
 
         this.coneBasicMat.side = THREE.DoubleSide
         this.coneLambMat.side = THREE.DoubleSide
         this.conePhongMat.side = THREE.DoubleSide
 
         // lightbulb's materials
-        this.lightBasicMat = new THREE.MeshBasicMaterial({color: 0xcacfcb, emissive: 0xcacfcb})
-        this.lightLambMat = new THREE.MeshLambertMaterial({color: 0xcacfcb, emissive: 0xcacfcb})
-        this.lightPhongMat = new THREE.MeshPhongMaterial({color: 0xcacfcb, emissive: 0xcacfcb})
+        this.lightBasicMat = new THREE.MeshBasicMaterial({color: 0xcacfcb})
+        this.lightLambMat = new THREE.MeshLambertMaterial({color: 0xcacfcb})
+        this.lightPhongMat = new THREE.MeshPhongMaterial({color: 0xcacfcb})
     }
 
     lightingCalcOFF(part) {

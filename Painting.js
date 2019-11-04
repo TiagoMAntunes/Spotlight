@@ -4,6 +4,7 @@ class Painting extends SceneObject{
 
         this.createMaterials()
 
+        // build painting
         let side_width = 0.25
         let sq_width = 1
         for(let height = 0; height < 7; height++){
@@ -24,8 +25,24 @@ class Painting extends SceneObject{
             }
         }
 
+        // build frame
+        let top = super.createSceneObjBox(0, 7*(sq_width + side_width) - 0.25, -5*(sq_width + side_width) + 0.5, 0, 0.5, 10*(sq_width + side_width), this.frameBasicMat)
+        let bottom = super.createSceneObjBox(0, -0.75, -5*(sq_width + side_width) + 0.5, 0, 0.5, 10*(sq_width + side_width), this.frameBasicMat)
+        let left = super.createSceneObjBox(0, 3.5*(sq_width + side_width) - 0.5, 0.75, 0, 7*(sq_width + side_width) + 1, 0.5, this.frameBasicMat)
+        let right = super.createSceneObjBox(0, 3.5*(sq_width + side_width) - 0.5, -10*(sq_width + side_width) + 0.25, 0, 7*(sq_width + side_width) + 1, 0.5, this.frameBasicMat)
+        
+        top.name = 'frame'
+        bottom.name = 'frame'
+        left.name = 'frame'
+        right.name = 'frame'
+        this.add(top)
+        this.add(bottom)
+        this.add(left)
+        this.add(right)
+
         this.position.set(x,y - 7/2*(sq_width + side_width),z + 10/2*(sq_width + side_width))
         this.name = 'painting'
+        console.log(this)
     }
 
     update() {
@@ -57,6 +74,11 @@ class Painting extends SceneObject{
         this.circleBasicMat = new THREE.MeshBasicMaterial({color: 0xffffff})
         this.circleLambMat = new THREE.MeshLambertMaterial({color: 0xffffff})
         this.circlePhongMat = new THREE.MeshPhongMaterial({color: 0xffffff})
+
+        // frame's materials
+        this.frameBasicMat = new THREE.MeshBasicMaterial({color: 0x3a2612})
+        this.frameLambMat = new THREE.MeshLambertMaterial({color: 0x3a2612})
+        this.framePhongMat = new THREE.MeshPhongMaterial({color: 0x3a2612})
     }
 
     lightingCalcOFF(part) {
@@ -66,19 +88,28 @@ class Painting extends SceneObject{
         else if (part.name == 'side')
             part.material = this.sideBasicMat
 
-        else
+        else if (part.name == 'circle')
             part.material = this.circleBasicMat
+
+        else if (part.name = 'frame')
+            part.material = this.frameBasicMat 
     }
 
     activateLambert(part) {
+        console.log(part.name)
         if (part.name == 'square')                
             part.material = this.squareLambMat
 
         else if (part.name == 'side')
             part.material = this.sideLambMat
 
-        else
+        else if (part.name = 'circle')
             part.material = this.circleLambMat
+
+        else if (part.name = 'frame') {
+            console.log("frame")
+            part.material = this.frameLambMat
+        }
     }
 
     activatePhong(part) {
@@ -88,7 +119,12 @@ class Painting extends SceneObject{
         else if (part.name == 'side')
             part.material = this.sidePhongMat
 
-        else
+        else if (part.name = 'circle')
             part.material = this.circlePhongMat
+
+        else if (part.name = 'frame') {
+            console.log("frame")
+            part.material = this.framePhongMat
+        }
     }
 }

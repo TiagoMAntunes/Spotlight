@@ -75,7 +75,7 @@ function update() {
     }
 
     for (i in scene.children) {
-    	if (['painting', 'pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
+    	if (['icosahedron', 'painting', 'pedestal', 'spotlight', 'floor', 'wall'].indexOf(scene.children[i].name) >= 0) {
     		scene.children[i].update()
     	} 
     }
