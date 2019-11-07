@@ -19,12 +19,9 @@ class Spotlight extends SceneObject {
         spotlight.angle = 0.6
         spotlight.penumbra = 0.5
         spotlight.target = tgt
-    
-        var helper = new THREE.SpotLightHelper(spotlight)
         
         this.spotlight = spotlight
         this.target = spotlight.target
-        this.helper = helper
 
         lightbulb.add(spotlight)
         

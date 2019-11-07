@@ -39,14 +39,11 @@ function createScene() {
 
     for (let i in spotlights) {
         scene.add(spotlights[i])
-        scene.add(spotlights[i].helper)
         scene.add(spotlights[i].target)
     }
 
     directional_light = new THREE.DirectionalLight(0xffffff, 0.5)
     directional_light.position.set(30,30,0)
-    let helper = new THREE.DirectionalLightHelper(directional_light, 5)
-    scene.add(helper)
     directional_light.target = scene
     directional_light
     scene.add(directional_light)
@@ -69,7 +66,6 @@ function update() {
     for(i = 0 ; i < spotlights.length; i++){
         if(switches[i]){
             spotlights[i].spotlight.intensity = spotlights[i].spotlight.intensity == 0? 1 : 0
-            spotlights[i].helper.visible = spotlights[i].helper.visible ? false : true
             switches[i] = false
         }
     }
